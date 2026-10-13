@@ -1,0 +1,22 @@
+{
+  "status": "experimental / future work (proposal Section 15); outputs derive from a SIMULATED pilot",
+  "created": "2026-10-13",
+  "random_seed": 42,
+  "baseline_churn_risk": "Module 3 calibrated churn_probability",
+  "save_probability": "sigmoid(a + 0.6*price_gap - kappa*z_risk), clipped [0.01, 0.80]; a solved so mean = 0.22",
+  "price_gap": "z(MonthlyCharges) - 0.6*z(services_count)",
+  "backfire_probability": "sigmoid(-4.2 + 0.7*TwoYear + 0.3*z(tenure) - 0.2*z(services_count)), clipped [0.002, 0.10]",
+  "primary_divergence_kappa": 1.0,
+  "assignment": "randomized, P(W=1)=0.5",
+  "uplift_sign_convention": "uplift = reduction in churn probability if contacted (positive = offer helps)",
+  "primary_learner": "X-learner (XGBoost)",
+  "learner_selection_rule": "one-standard-error rule on mean Qini AUC across 20 simulated pilots: simplest learner within 1 paired SE of the best; complexity order = ['X-learner (Ridge stage 2)', 'X-learner (XGBoost)', 'T-learner (XGBoost)']",
+  "segment_delta_practical_significance": 0.03,
+  "segment_baseline_risk_cutoff": 0.2611981727818645,
+  "dashboard_labels": {
+    "Persuadable": "Save-Worthy",
+    "Sure Thing": "Naturally Loyal",
+    "Lost Cause": "Beyond Recovery",
+    "Sleeping Dog": "Risk-if-Contacted"
+  }
+}
