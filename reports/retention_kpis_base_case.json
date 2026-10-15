@@ -1,0 +1,76 @@
+{
+  "note": "Base-case figures under the assumptions in configs/roi_assumptions.json; scenario-conditional, not forecasts.",
+  "created": "2026-10-15",
+  "total_monthly_revenue": 456116.6,
+  "monthly_revenue_at_risk": 137647.9778620248,
+  "expected_value_at_risk": 967285.1359191647,
+  "precision_at_top_10pct_risk": 0.7613636363636364,
+  "base_rate_churn": 0.2653698707936959,
+  "profit_optimal_campaign": {
+    "customers contacted": 2347.0,
+    "total cost ($)": 74787.35489155972,
+    "expected customers saved": 288.1307901813984,
+    "monthly revenue protected ($)": 22734.882315933464,
+    "margin value protected ($)": 156601.61034974369,
+    "net profit ($)": 81814.25545818396,
+    "ROI (profit / cost)": 1.0939584048240925,
+    "cost per retained customer ($)": 259.56044074455167,
+    "monthly revenue protected per $ spent": 0.3039936677650737,
+    "expected saves per 100 contacts": 12.276556888853788
+  },
+  "profit_optimal_share_of_base_pct": 33.32386767002698,
+  "kpis_by_budget_net_value_ranking": {
+    "top 10%": {
+      "customers contacted": 704.0,
+      "total cost ($)": 18537.13766587048,
+      "expected customers saved": 118.89750926709176,
+      "monthly revenue protected ($)": 10306.27716561644,
+      "margin value protected ($)": 70215.18674359664,
+      "net profit ($)": 51678.04907772616,
+      "ROI (profit / cost)": 2.7878116896586915,
+      "cost per retained customer ($)": 155.90854493199342,
+      "monthly revenue protected per $ spent": 0.5559799658062512,
+      "expected saves per 100 contacts": 16.888850748166444
+    },
+    "top 20%": {
+      "customers contacted": 1408.0,
+      "total cost ($)": 43134.64139139392,
+      "expected customers saved": 201.70710173115134,
+      "monthly revenue protected ($)": 17018.033533960122,
+      "margin value protected ($)": 116649.87778072746,
+      "net profit ($)": 73515.23638933354,
+      "ROI (profit / cost)": 1.7043201013837816,
+      "cost per retained customer ($)": 213.84790630171585,
+      "monthly revenue protected per $ spent": 0.39453286233545704,
+      "expected saves per 100 contacts": 14.325788475223817
+    },
+    "top 30%": {
+      "customers contacted": 2112.0,
+      "total cost ($)": 67653.30776483603,
+      "expected customers saved": 268.75419598039986,
+      "monthly revenue protected ($)": 21661.548913965966,
+      "margin value protected ($)": 149016.47557014285,
+      "net profit ($)": 81363.16780530682,
+      "ROI (profit / cost)": 1.202648776437162,
+      "cost per retained customer ($)": 251.72930795755823,
+      "monthly revenue protected per $ spent": 0.3201846240728074,
+      "expected saves per 100 contacts": 12.72510397634469
+    }
+  },
+  "break_even_save_rate_by_campaign_size_pct": {
+    "5%": 2.62,
+    "10%": 3.89,
+    "15%": 5.09,
+    "20%": 6.17,
+    "25%": 7.17,
+    "30%": 8.14,
+    "35%": 9.09,
+    "40%": 10.01,
+    "45%": 10.92,
+    "50%": 11.82,
+    "55%": 12.72,
+    "60%": 13.65,
+    "65%": 14.62
+  },
+  "robust_contact_customers": 651
+}
