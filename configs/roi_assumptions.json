@@ -1,0 +1,81 @@
+{
+  "status": "core business layer; assumptions are analyst-set placeholders, not measured values",
+  "created": "2026-10-15",
+  "base_assumptions": {
+    "margin": 0.4,
+    "horizon": 24,
+    "annual_disc": 0.1,
+    "hazard_mult": 1.0,
+    "save_rate": 0.22,
+    "contact_cost": 5.0,
+    "discount_pct": 0.1,
+    "discount_months": 6
+  },
+  "tested_ranges": {
+    "margin": [
+      0.2,
+      0.6
+    ],
+    "horizon": [
+      12,
+      36
+    ],
+    "annual_disc": [
+      0.0,
+      0.2
+    ],
+    "hazard_mult": [
+      0.5,
+      2.0
+    ],
+    "save_rate": [
+      0.1,
+      0.35
+    ],
+    "contact_cost": [
+      2.0,
+      20.0
+    ],
+    "discount_pct": [
+      0.05,
+      0.2
+    ]
+  },
+  "robustness_scenarios": {
+    "save_rate": [
+      0.1,
+      0.22,
+      0.35
+    ],
+    "margin": [
+      0.25,
+      0.4,
+      0.55
+    ],
+    "horizon": [
+      12,
+      24,
+      36
+    ],
+    "discount_pct": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "hazard_mult": [
+      0.5,
+      1.0,
+      2.0
+    ]
+  },
+  "probability_used": "out-of-fold calibrated churn probability (5-fold cross-fit; Module 3 recipe)",
+  "clv_method": "persona-level constant hazard from exposure (churners / customer-months); margin basis; finite horizon; discounted",
+  "contact_economics": "N = s*p*V - contact_cost - (1 - p + s*p)*D ; break-even p* = (contact_cost + D) / (s*V + (1-s)*D)",
+  "persona_monthly_hazard": {
+    "Long-Tenure Low-Engagement": 0.002345907118686292,
+    "Loyal Premium": 0.001836063189659874,
+    "New & High-Risk": 0.018804002416156734,
+    "New & Price-Sensitive": 0.026413667023892078
+  },
+  "time_scale_caveat": "Churn flag and tenure imply different time scales; hazard_mult tests the sensitivity."
+}
