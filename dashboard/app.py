@@ -24,7 +24,7 @@ from src.roi_simulator import (DEFAULTS, breakeven_save_rate, campaign_kpis, clv
                                economics, profit_curve)
 
 FS = ROOT / "data" / "feature_store"
-st.set_page_config(page_title="SmartTel Retention Intelligence", layout="wide")
+st.set_page_config(page_title="📊 SmartTel Retention Intelligence", page_icon="📊", layout="wide")
 
 
 # --------------------------------------------------------------------------- data layer
@@ -99,18 +99,22 @@ live = table.assign(clv=V, net_value=N, break_even_p=p_star, evar=p * V)
 st.title("SmartTel Retention Intelligence")
 st.caption("Decision-support for retention campaigns. Dollar figures are scenario-conditional, not forecasts.")
 
-tabs = st.tabs(["Overview", "Customer explorer", "Prioritization matrix",
-                "Campaign simulator", "What-if scenarios", "Model & assumptions"])
+tabs = st.tabs(["📊 Overview",
+    "👤 Customer Explorer",
+    "🎯 Prioritization",
+    "💰 Campaign Simulator",
+    "🔮 What-if Scenarios",
+    "⚙️ Model & Assumptions"])
 
 # --------------------------------------------------------------------------- 1. overview
 with tabs[0]:
     labels = (feats["Churn"] == "Yes").astype(int).to_numpy()
     top10 = np.argsort(-feats["churn_probability_oof"].to_numpy())[: int(0.10 * len(feats))]
     c = st.columns(5)
-    c[0].metric("Customers", f"{n:,}")
-    c[1].metric("Observed churn rate", f"{labels.mean():.1%}")
-    c[2].metric("Monthly revenue at risk", f"${(mc * p).sum():,.0f}", f"{(mc * p).sum() / mc.sum():.1%} of revenue", delta_color="off")
-    c[3].metric("High-risk customers (p ≥ 0.5)", f"{(p >= 0.5).sum():,}")
+    c[0].metric("👥 Total Customers", f"{n:,}")
+    c[1].metric(" ⚠️ Observed churn rate", f"{labels.mean():.1%}")
+    c[2].metric(" 💸 Monthly revenue at risk", f"${(mc * p).sum():,.0f}", f"{(mc * p).sum() / mc.sum():.1%} of revenue", delta_color="off")
+    c[3].metric(" 🎯 High-risk customers (p ≥ 0.5)", f"{(p >= 0.5).sum():,}")
     c[4].metric("Precision, top 10% highest risk", f"{labels[top10].mean():.1%}", f"base rate {labels.mean():.1%}", delta_color="off")
 
     st.subheader("Profit-optimal campaign under the current assumptions")
@@ -138,7 +142,7 @@ with tabs[0]:
 
 # --------------------------------------------------------------------------- 2. customer explorer
 with tabs[1]:
-    st.caption("Customers are listed best-first by expected net value of contact.")
+    st.caption(" 📈 Customers are listed best-first by expected net value of contact.")
     cid = st.selectbox("Customer ID", live.sort_values("net_value", ascending=False)["customerID"], key="customer_id")
     row = live.loc[live["customerID"] == cid].iloc[0]
     c = st.columns(5)
@@ -153,7 +157,7 @@ with tabs[1]:
              f"({row['contact_robustness_share']:.0%} of scenarios favour contact)")
     if reasons is not None:
         r = reasons.loc[reasons["customerID"] == cid].iloc[0]
-        st.subheader("What the model weighs for this customer")
+        st.subheader(" 🔎 What the model weighs for this customer")
         for k in (1, 2, 3):
             arrow = "▲" if r[f"driver_{k}_effect"] == "raises risk" else "▼"
             st.write(f"{arrow} **{r[f'driver_{k}']}** — {r[f'driver_{k}_effect']}")
