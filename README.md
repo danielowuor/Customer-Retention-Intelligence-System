@@ -38,6 +38,6 @@ Experimental extensions (`04_survival_analysis`, `05_uplift_modeling`) are **not
 
 **Streamlit Community Cloud:** push to GitHub, create an app, set the main file to `app/app.py`, and choose Python 3.12.
 Apps can be public, which is fine for this public dataset; use private hosting plus authentication for real customer data.
-👉 **Live App:** [View Streamlit Deployment](https://danielowuor-lfplivstxvufrh8rojukxd.streamlit.app/)
+👉 **Live App:** [View Streamlit Deployment](https://danielowuor-lfplivstxvufrh8rojukxd.streamlit.app/) 
 
 **Docker:** `docker build -t smarttel . && docker run -p 8501:8501 smarttel`
